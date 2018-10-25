@@ -2,11 +2,12 @@
     (:predicates
         (adj ?spot-1 ?spot-2)
         (have-space ?spot)
-        (is-there ?who ?)
-        (is-here ?who)
-        (is-there-bike ?which)
+        (at ?who ?spot)
+        (is-there-bike ?spot)
         (is-person ?who)
-
+        (is-bike ?bike) 
+        (prox ?spot ?tourism)
+        (is-tourism ?tourism)
 
     )
 
@@ -15,11 +16,10 @@
         :precondition (and (is-spot ?from)
                 (adj ?from ?to)
                 (is-person ?who)
-
                 (is-there-bike ?which)
-                (not (is-here ?who))
+                (not (at ?who ?from))
                 )
-        :effect (and (not is-there-bike ?which)
+        :effect (and )
                 ()
                 )
     )
@@ -29,9 +29,10 @@
         :precondition (and (is-spot ?from)
                 (adj ?to ?from)
                 (have-space ?from)
-
+                (at ?who ?from)
                 )
-        :effect (and (is-there-bike ?which))
+        :effect (and (is-there-bike ?spot)
+                )
     )
 
     (:action wait-five
