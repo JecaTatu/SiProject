@@ -10,6 +10,7 @@
         (is-tourism ?tourism)
         (wait5 ?who)
         (with-bike ?who)
+        (timeout ?who)
 
     )
 
@@ -20,7 +21,8 @@
                 (is-person ?who)
                 (is-there-bike ?from ?which)
                 (at ?who ?from)
-                )not (with-bike ?who)
+                (not (with-bike ?who))
+                )
         :effect (and (not (is-there-bike ?from ?which)))
                 (with-bike ?who)
                 )
@@ -36,6 +38,7 @@
                 )
         :effect (and (is-there-bike ?spot)
                 (not with-bike ?who)
+                (timeout ?who)
                 )
     )
 
@@ -43,11 +46,13 @@
         :parameters (?who ?from)
         :precondition (and (is-spot ?from)
                 (at ?who ?from)
-                (with-bike ?who)
+                (not (with-bike ?who))
                 (is-person ?who)
                 (wait5 ?who)
                 )
-        :effect (and (not (wait5 ?who)))
+        :effect (and (not (wait5 ?who)
+                (timeout ?who)
+                )
     )
 
     (:action walk
@@ -57,7 +62,9 @@
                 (not (with-bike ?who))
                 (at ?who ?from)
                 )
-        :effect (and (at ?who ?tourism))
+        :effect (and (at ?who ?tourism)
+                (not (timeout ?who))
+                )
     )
 
     (:action visit
@@ -66,7 +73,7 @@
                 (prox ?from ?tourism)
                 (at ?who ?from)
                 )
-        :effect ()
+        :effect ((not (timeout ?who)))
     )
 
     (:action ride
@@ -78,7 +85,8 @@
                 (is-person ?who)
                 )
         :effect (and (not (wait5 ?who))
-                (not (at ?who ?from)
+                (not (at ?who ?from))
+                (timeout ?who)
                 )
             
     )
