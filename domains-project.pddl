@@ -11,6 +11,9 @@
         (wait5 ?who)
         (with-bike ?who)
         (timeout ?who)
+        (with-money ?who)
+        (passed-here ?who ?tourism)
+        (bank ?tourism)
 
     )
 
@@ -73,7 +76,22 @@
                 (prox ?from ?tourism)
                 (at ?who ?from)
                 )
-        :effect ((not (timeout ?who)))
+        :effect (and (not (timeout ?who))
+                (passed-here ?who ?tourism)
+                )
+    )
+
+    (:action money
+        :parameters (?who ?from ?tourism)
+        :precondition (and (bank ?tourism)
+                (prox ?from ?tourism)
+                (at ?who ?from)
+                
+                )
+        :effect (and (not (timeout ?who))
+                (passed-here ?who ?tourism)
+                (with-money ?who)
+                )
     )
 
     (:action ride
