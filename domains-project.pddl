@@ -82,7 +82,7 @@
                 )
     )
 
-    (:action visit
+    (:action visit-money
         :parameters (?who ?from ?tourism)
         :precondition (and (is-spot ?from)
                 (prox ?from ?tourism)
