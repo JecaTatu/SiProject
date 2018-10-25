@@ -26,5 +26,7 @@
 	 (is-person jose) (at jose Bike-05-Cais)
      (is-person maria) (at maria Bike-05-Alf)
 	 
-  (:goal (and (have jose the-gold) (at agent sq-1-1)))
+  (:goal (and (passed-here jose banco) ((passed-here jose alfandega) and (with-money jose))
+
+  ))
   )
