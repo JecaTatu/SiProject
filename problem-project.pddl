@@ -10,15 +10,14 @@
 	 (adj Bike-15 Bike-16) (adj Bike-16 Bike-15)
 	 (adj Bike-05-Alf Bike-05-Cais) (adj Bike-05-Cais Bike-05-Alf)
 	 (adj Bike-07 Bike-05-Alf) (adj Bike-05-Alf Bike-07)
-	 
-	 (pit sq-1-2)
+	 (prox Bike-05-Alf alfandega) (is-turism alfandega)
+     (prox Bike-05-Cais banco) (is-turism banco)
+     (prox Bike-16 igreja) (is-turism igreja)
+     (prox Bike-15 praca) (is-turism praca)
+    
 	 (is-person joao) (at joao Bike-16)
 	 (is-person jose) (at jose Bike-05-Cais)
      (is-person maria) (at maria Bike-05-Alf)
-	 (is-arrow the-arrow)
-	 (have agent the-arrow)
-	 (is-wumpus wumpus)
-	 (at wumpus sq-2-3)
-	 (wumpus-in sq-2-3))
+	 
   (:goal (and (have jose the-gold) (at agent sq-1-1)))
   )
