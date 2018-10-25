@@ -32,7 +32,7 @@
 	 (is-spot Bike-16)
 	 (is-spot Bike-19)
   )
-  (:goal (and (passed-here jose banco) (and (passed-here jose alfandega) (with-money jose))
+  (:goal (and (passed-here joao banco) (passed-here-money joao alfandega)
 		(passed-here jose praca) (passed-here-together jose maria mercado)
 		(passed-here maria igreja)
   ))

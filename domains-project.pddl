@@ -16,6 +16,7 @@
         (bank ?tourism)
         (is-spot ?spot)
         (passed-here-together ?who-1 ?who-2 ?tourism)
+        (passed-here-money ?who ?tourism)
 
     )
 
@@ -80,6 +81,19 @@
                 (passed-here ?who ?tourism)
                 )
     )
+
+    (:action visit
+        :parameters (?who ?from ?tourism)
+        :precondition (and (is-spot ?from)
+                (prox ?from ?tourism)
+                (at ?who ?from)
+                (with-money ?who)
+                )
+        :effect (and (not (timeout ?who))
+                (passed-here-money ?who ?tourism)
+                )
+    )
+
     (:action visit-together
         :parameters (?who-1 ?who-2 ?from ?tourism)
         :precondition (and (is-spot ?from)
