@@ -1,7 +1,7 @@
 (define (problem turismo)
-  (:domain turismo)
+  (:domain VenBra)
   (:objects  igreja Bike-16 praca Bike-15 Bike-07 alfandega Bike-05-Alf banco Bike-05-Cais mercado Bike-19
-        bike-1 bike-2 bike-3 bike-5 bike-6 bike-7 bike-8
+        bike-1 bike-2 bike-3 bike-4 bike-5 bike-6 bike-7 bike-8
 	    joao jose maria
         )
   (:init (adj Bike-15 Bike-05-Cais) (adj Bike-05-Cais Bike-15)
@@ -10,10 +10,10 @@
 	 (adj Bike-15 Bike-16) (adj Bike-16 Bike-15)
 	 (adj Bike-05-Alf Bike-05-Cais) (adj Bike-05-Cais Bike-05-Alf)
 	 (adj Bike-07 Bike-05-Alf) (adj Bike-05-Alf Bike-07)
-	 (prox Bike-05-Alf alfandega) (is-turism alfandega)
-     (prox Bike-05-Cais banco) (is-turism banco)
-     (prox Bike-16 igreja) (is-turism igreja)
-     (prox Bike-15 praca) (is-turism praca)
+	 (prox Bike-05-Alf alfandega) (is-tourism alfandega)
+     (prox Bike-05-Cais banco) (is-tourism banco)
+     (prox Bike-16 igreja) (is-tourism igreja)
+     (prox Bike-15 praca) (is-tourism praca)
      (is-bike bike-1) (is-there-bike Bike-07 bike-1)
      (is-bike bike-2) (is-there-bike Bike-07 bike-2)
      (is-bike bike-3) (is-there-bike Bike-07 bike-3)
@@ -25,8 +25,16 @@
 	 (is-person joao) (at joao Bike-16)
 	 (is-person jose) (at jose Bike-05-Cais)
      (is-person maria) (at maria Bike-05-Alf)
-	 
-  (:goal (and (passed-here jose banco) ((passed-here jose alfandega) and (with-money jose))
-
-  ))
+	 (is-spot Bike-05-Alf)
+	 (is-spot Bike-05-Cais)
+	 (is-spot Bike-07)
+	 (is-spot Bike-15)
+	 (is-spot Bike-16)
+	 (is-spot Bike-19)
   )
+  (:goal (and (passed-here jose banco) (and (passed-here jose alfandega) (with-money jose))
+		(passed-here jose praca) (passed-here-together jose maria mercado)
+		(passed-here maria igreja)
+  ))
+
+)
