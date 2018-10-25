@@ -12,10 +12,9 @@
 	 (adj Bike-07 Bike-05-Alf) (adj Bike-05-Alf Bike-07)
 	 
 	 (pit sq-1-2)
-	 (is-gold the-gold)
-	 (at the-gold sq-1-3)
-	 (is-agent agent)
-	 (at agent sq-1-1)
+	 (is-person joao) (at joao Bike-16)
+	 (is-person jose) (at jose Bike-05-Cais)
+     (is-person maria) (at maria Bike-05-Alf)
 	 (is-arrow the-arrow)
 	 (have agent the-arrow)
 	 (is-wumpus wumpus)
