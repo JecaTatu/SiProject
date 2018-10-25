@@ -29,4 +29,19 @@
             (prox ?from ?tourism)
             ())
     )
+    (:action visit
+        :parameters (?who ?from ?tourism)
+        :precondition (and (is-spot ?from)
+            (prox ?from ?tourism)
+            ())
+        :effect ()
+    )
+    (:action ride
+        :parameters (?who ?from ?tourism)
+        :precondition (and (is-spot ?from)
+            (prox ?from ?tourism)
+            ())
+        :effect()
+            
+    )
 )
